@@ -101,7 +101,7 @@
   <div style="display: flex; flexDirection: row;">
     <div>
       <p>Olaf</p>
-      <audio controls id="olafTheme" src="themes/olaf.mp3"></audio>
+      <audio controls id="olafTheme" src="themes/olaf-kingrex.ogg"></audio>
     </div>
     <div>
       <p>Rachel</p>
@@ -135,14 +135,28 @@
     </div>
   </div>
 
-  <header>SFX</header>
+  <header>Audio Tests</header>
   <div>
-    <p>Infantry 1</p>
-    <audio controls src="movement/inf1.mp3"></audio>
+    <p>Method A</p>
+    <audio id="A" controls src=""></audio>
   </div>
   <div>
-    <p>Infantry 2</p>
-    <audio controls src="movement/inf2.mp3"></audio>
+    <p>Method B</p>
+    <audio id="B" controls src=""></audio>
   </div>
 </body>
+<script>
+  var audioA = document.getElementById('A');
+  audioA.src = 'themes/olaf-kingrex.ogg';
+  audioA.addEventListener('timeupdate', function(){
+            var buffer = 1;
+            if(this.currentTime > this.duration - buffer){
+                this.currentTime = 0;
+                this.play();
+            }}, false);
+
+  var audioB = document.getElementById('B');
+  audioB.src = 'themes/olaf-kingrex.ogg';
+  audioB.loop = true;
+</script>
 </html>
